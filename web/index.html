@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <title>Whisperwave · Live Transcription</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div class="brand-text">
+          <h1>Whisperwave</h1>
+          <p>Real-time speech to text</p>
+        </div>
+      </div>
+      <div class="status" id="status">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusText">Connecting…</span>
+      </div>
+    </header>
+
+    <section class="stage glass">
+      <canvas id="viz" class="viz"></canvas>
+
+      <div class="controls">
+        <button id="micBtn" class="mic" aria-label="Start transcription">
+          <span class="mic-ring"></span>
+          <svg class="mic-icon" viewBox="0 0 24 24" width="30" height="30" fill="none"
+               stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+            <path d="M5 11a7 7 0 0 0 14 0"></path>
+            <line x1="12" y1="18" x2="12" y2="22"></line>
+          </svg>
+          <svg class="stop-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <rect x="6" y="6" width="12" height="12" rx="3"></rect>
+          </svg>
+        </button>
+        <div class="hint" id="hint">Tap to transcribe</div>
+      </div>
+    </section>
+
+    <section class="transcript glass">
+      <div class="transcript-head">
+        <h2>Transcript</h2>
+        <div class="t-actions">
+          <button id="clearBtn" class="ghost" title="Clear">Clear</button>
+          <button id="copyBtn" class="ghost copy" title="Copy to clipboard">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
+              <path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+      <div id="output" class="output" aria-live="polite">
+        <p class="placeholder">Your words will appear here, live.</p>
+      </div>
+    </section>
+
+    <footer class="metrics" id="metrics">
+      <div class="metric"><span class="m-val" id="mLatency">—</span><span class="m-lbl">latency / segment</span></div>
+      <div class="metric"><span class="m-val" id="mRtf">—</span><span class="m-lbl">real-time factor</span></div>
+      <div class="metric"><span class="m-val" id="mPer1s">—</span><span class="m-lbl">to process 1 s</span></div>
+      <div class="metric"><span class="m-val" id="mWords">0</span><span class="m-lbl">words</span></div>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
