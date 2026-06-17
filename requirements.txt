@@ -1,0 +1,6 @@
+sherpa-onnx==1.13.3
+numpy>=2.0
+fastapi>=0.115
+uvicorn[standard]>=0.34
+websockets>=13
+soundfile>=0.12
